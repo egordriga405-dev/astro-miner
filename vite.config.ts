@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/astro-miner-idle/',
+  base: '/astro-miner/',
   plugins: [react()],
   build: {
     outDir: 'dist',
