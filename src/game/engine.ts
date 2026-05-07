@@ -6,7 +6,7 @@ let lastTick = Date.now();
 export const startGameLoop = () => {
   const tick = () => {
     const now = Date.now();
-    const delta = (now - lastTick) / 1000; // секунды с прошлого тика
+    const delta = (now - lastTick) / 1000;
     lastTick = now;
     
     const state = useGameState.getState();
@@ -19,21 +19,9 @@ export const startGameLoop = () => {
       });
     }
     
-    // Проверка на престиж (каждые 10 секунд)
-    if (state.totalGoldEarned >= 1000000 && !state.showPrestige && state.prestigeCount < 10) {
-      useGameState.setState({ showPrestige: true });
-    }
-    
     animationFrame = requestAnimationFrame(tick);
   };
   
   lastTick = Date.now();
   animationFrame = requestAnimationFrame(tick);
-};
-
-export const stopGameLoop = () => {
-  if (animationFrame) {
-    cancelAnimationFrame(animationFrame);
-    animationFrame = null;
-  }
 };
